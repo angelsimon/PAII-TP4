@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.grupo06.tp04.R;
+import com.grupo06.tp04.daos.CategoriaDAO;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +45,11 @@ public class ListadoFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
+
+
+
+
+
         return fragment;
     }
 
@@ -49,6 +58,14 @@ public class ListadoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
+        }
+        CategoriaDAO dao = new CategoriaDAO(getContext());
+        try {
+            ResultSet rs = dao.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
