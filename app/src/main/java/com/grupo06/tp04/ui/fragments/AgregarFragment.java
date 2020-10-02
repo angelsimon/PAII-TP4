@@ -2,13 +2,26 @@ package com.grupo06.tp04.ui.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.grupo06.tp04.R;
+import com.grupo06.tp04.adapters.CategoriaSpinnerAdapter;
+import com.grupo06.tp04.controllers.CategoriaController;
+import com.grupo06.tp04.models.CategoriaModel;
+import com.grupo06.tp04.system.helpers.CategoriaSelectHelper;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +29,9 @@ import com.grupo06.tp04.R;
  * create an instance of this fragment.
  */
 public class AgregarFragment extends Fragment {
+
+    private Spinner cbxCategorias;
+    private CategoriaSpinnerAdapter adaptador;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,10 +68,40 @@ public class AgregarFragment extends Fragment {
         }
     }
 
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        try {
+            CategoriaSelectHelper task = new CategoriaSelectHelper(this.getContext(), view);
+            task.execute();
+            cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
+            cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                    CategoriaModel item = (CategoriaModel) cbxCategorias.getSelectedItem();
+                    Toast.makeText(getContext(), String.valueOf(item.getId()), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_agregar, container, false);
     }
+
+
 }

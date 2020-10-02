@@ -5,7 +5,10 @@ import android.os.AsyncTask;
 
 import com.grupo06.tp04.models.CategoriaModel;
 import com.grupo06.tp04.system.libraries.MySQLDBConnection;
+import com.mysql.jdbc.MySQLConnection;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,19 +32,17 @@ public class CategoriaDAO extends AsyncTask<String, Void, String> {
         return lista;
     }*/
 
-    public ResultSet getAll() throws SQLException, ClassNotFoundException {
-        MySQLDBConnection cn = new MySQLDBConnection();
+    public void getAll()  {
         try {
-            cn.connect();
-            ResultSet rs = cn.select("select * from categoria");
-            while(rs.next()){
-                String nombre = rs.getString("descripcion");
-            }
-            return rs;
-        } catch (SQLException e) {
-           throw e;
-        } catch (ClassNotFoundException e) {
-            throw e;
+            Class.forName("com.mysql.jdbc.Driver");
+            String url1 = "jdbc:mysql://angelsimon.com.ar:3306/TP04";
+            String user = "tp";
+            String password = "Michi_2020";
+
+            Connection conn = DriverManager.getConnection(url1, user, password);
+            conn.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
     }
 

@@ -9,10 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.grupo06.tp04.R;
-import com.grupo06.tp04.daos.CategoriaDAO;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,19 +55,12 @@ public class ListadoFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
         }
-        CategoriaDAO dao = new CategoriaDAO(getContext());
-        try {
-            ResultSet rs = dao.getAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_listado, container, false);
     }
