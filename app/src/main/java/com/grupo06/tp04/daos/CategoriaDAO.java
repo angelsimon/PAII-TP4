@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CategoriaDAO extends AsyncTask<String, Void, String> {
+public class CategoriaDAO {
     Context context;
 
 
@@ -21,34 +21,5 @@ public class CategoriaDAO extends AsyncTask<String, Void, String> {
         this.context = context;
     }
 
-    /*ArrayList<CategoriaModel> getAll(){
-       ArrayList<CategoriaModel> lista = new ArrayList<CategoriaModel>();
-       try {
 
-       }
-       catch(Exception ex){
-
-       }
-        return lista;
-    }*/
-
-    public void getAll()  {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url1 = "jdbc:mysql://angelsimon.com.ar:3306/TP04";
-            String user = "tp";
-            String password = "Michi_2020";
-
-            Connection conn = DriverManager.getConnection(url1, user, password);
-            conn.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected String doInBackground(String... strings) {
-
-        return null;
-    }
 }

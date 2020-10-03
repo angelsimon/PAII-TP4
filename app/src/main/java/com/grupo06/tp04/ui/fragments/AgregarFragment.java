@@ -10,18 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.grupo06.tp04.R;
 import com.grupo06.tp04.adapters.CategoriaSpinnerAdapter;
-import com.grupo06.tp04.controllers.CategoriaController;
 import com.grupo06.tp04.models.CategoriaModel;
-import com.grupo06.tp04.system.helpers.CategoriaSelectHelper;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
+import com.grupo06.tp04.system.helpers.ArticuloInsertAsync;
+import com.grupo06.tp04.system.helpers.CategoriaSelectAsync;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,13 +64,11 @@ public class AgregarFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
-            CategoriaSelectHelper task = new CategoriaSelectHelper(this.getContext(), view);
+            CategoriaSelectAsync task = new CategoriaSelectAsync(this.getContext(), view);
             task.execute();
             cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
             cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -83,7 +77,6 @@ public class AgregarFragment extends Fragment {
                     CategoriaModel item = (CategoriaModel) cbxCategorias.getSelectedItem();
                     Toast.makeText(getContext(), String.valueOf(item.getId()), Toast.LENGTH_SHORT).show();
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -93,7 +86,6 @@ public class AgregarFragment extends Fragment {
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -103,5 +95,13 @@ public class AgregarFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_agregar, container, false);
     }
 
+    public void AgregarClick(View view){
+        try {
+            ArticuloInsertAsync task = new ArticuloInsertAsync(this.getContext(), view);
+            task.execute();
+        }
+        catch(Exception ex){
 
+        }
+    }
 }
