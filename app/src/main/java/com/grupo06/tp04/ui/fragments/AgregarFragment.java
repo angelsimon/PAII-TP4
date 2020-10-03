@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class AgregarFragment extends Fragment {
     private Spinner cbxCategorias;
     private CategoriaSpinnerAdapter adaptador;
     private EditText txtID, txtNombre, txtStock;
+    private Button btnAgregar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,6 +87,19 @@ public class AgregarFragment extends Fragment {
 
                 }
             });
+            btnAgregar.setOnClickListener(new Button.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    try {
+                        ArticuloInsertAsync task = new ArticuloInsertAsync(view.getContext(), view, bindData());
+                        task.execute();
+                    }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +113,7 @@ public class AgregarFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_agregar, container, false);
     }
 
-    public void AgregarClick(View view){
+    /*public void AgregarClick(View view){
         try {
             ArticuloInsertAsync task = new ArticuloInsertAsync(this.getContext(), view, bindData());
             task.execute();
@@ -106,13 +121,14 @@ public class AgregarFragment extends Fragment {
         catch(Exception ex){
             ex.printStackTrace();
         }
-    }
+    }*/
 
     private void bindControls(View view){
         txtID = (EditText)view.findViewById(R.id.txtID);
         txtNombre = (EditText)view.findViewById(R.id.txtNombre);
         txtStock = (EditText)view.findViewById(R.id.txtStock);
         cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
+        btnAgregar = (Button) view.findViewById(R.id.btnAgregar);
     }
 
     private ArticuloModel bindData(){
