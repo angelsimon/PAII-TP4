@@ -32,7 +32,7 @@ public class CategoriaSelectAsync extends AsyncTask<String, Void, String> {
             ResultSet rs = con.select("select * from categoria");
             while(rs.next()){
                 CategoriaModel cat = new CategoriaModel();
-                cat.setId(rs.getLong("id"));
+                cat.setId(rs.getInt("id"));
                 cat.setDescripcion(rs.getString("descripcion"));
                 lista.add(cat);
             }

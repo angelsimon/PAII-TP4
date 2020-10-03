@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.grupo06.tp04.R;
 import com.grupo06.tp04.adapters.CategoriaSpinnerAdapter;
+import com.grupo06.tp04.models.ArticuloModel;
 import com.grupo06.tp04.models.CategoriaModel;
 import com.grupo06.tp04.system.helpers.ArticuloInsertAsync;
 import com.grupo06.tp04.system.helpers.CategoriaSelectAsync;
@@ -28,6 +30,7 @@ public class AgregarFragment extends Fragment {
 
     private Spinner cbxCategorias;
     private CategoriaSpinnerAdapter adaptador;
+    private EditText txtID, txtNombre, txtStock;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,9 +71,9 @@ public class AgregarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         try {
+            bindControls(view);
             CategoriaSelectAsync task = new CategoriaSelectAsync(this.getContext(), view);
             task.execute();
-            cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
             cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
@@ -97,11 +100,28 @@ public class AgregarFragment extends Fragment {
 
     public void AgregarClick(View view){
         try {
-            ArticuloInsertAsync task = new ArticuloInsertAsync(this.getContext(), view);
+            ArticuloInsertAsync task = new ArticuloInsertAsync(this.getContext(), view, bindData());
             task.execute();
         }
         catch(Exception ex){
-
+            ex.printStackTrace();
         }
+    }
+
+    private void bindControls(View view){
+        txtID = (EditText)view.findViewById(R.id.txtID);
+        txtNombre = (EditText)view.findViewById(R.id.txtNombre);
+        txtStock = (EditText)view.findViewById(R.id.txtStock);
+        cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
+    }
+
+    private ArticuloModel bindData(){
+        ArticuloModel reg = new ArticuloModel();
+        reg.setId(Long.parseLong(txtID.getText().toString()));
+        reg.setNombre(txtNombre.getText().toString());
+        reg.setStock(Integer.parseInt(txtStock.getText().toString()));
+        CategoriaModel cat = (CategoriaModel) cbxCategorias.getSelectedItem();
+        reg.setIdCategoria(cat.getId());
+        return reg;
     }
 }

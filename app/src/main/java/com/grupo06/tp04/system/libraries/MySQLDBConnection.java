@@ -4,6 +4,7 @@ import com.grupo06.tp04.system.helpers.DBConfig;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,11 +39,11 @@ public class MySQLDBConnection {
         return "jdbc:mysql://" + host + ":" + port + "/" + nameBD;
     }
 
-    public Boolean connect() throws SQLException, ClassNotFoundException {
+    public Connection connect() throws SQLException, ClassNotFoundException {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection(this.getUrlConnection(), this.user, this.pass);
-            return true;
+            return this.con;
         }
         catch(Exception ex){
             throw ex;
@@ -57,6 +58,17 @@ public class MySQLDBConnection {
             throw ex;
         }
     }
+
+    public int insert(PreparedStatement statement) throws SQLException {
+        int res;
+        try{
+            res = statement.executeUpdate();
+            return res;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
     public void close() throws SQLException {
         try {
             if (!this.con.isClosed()) {

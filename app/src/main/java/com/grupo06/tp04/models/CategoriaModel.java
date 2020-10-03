@@ -3,10 +3,10 @@ package com.grupo06.tp04.models;
 import java.io.Serializable;
 
 public class CategoriaModel implements Serializable {
-    private Long id;
+    private Integer id;
     private String descripcion;
 
-    public CategoriaModel(Long id, String descripcion) {
+    public CategoriaModel(Integer id, String descripcion) {
         this.id = id;
         this.descripcion = descripcion;
     }
@@ -14,11 +14,11 @@ public class CategoriaModel implements Serializable {
     public CategoriaModel() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
