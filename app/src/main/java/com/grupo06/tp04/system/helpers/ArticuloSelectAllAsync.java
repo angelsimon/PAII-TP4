@@ -3,10 +3,13 @@ package com.grupo06.tp04.system.helpers;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grupo06.tp04.R;
+import com.grupo06.tp04.adapters.ArticuloListAdapter;
 import com.grupo06.tp04.adapters.CategoriaSpinnerAdapter;
 import com.grupo06.tp04.models.ArticuloModel;
 import com.grupo06.tp04.models.CategoriaModel;
@@ -56,11 +59,10 @@ public class ArticuloSelectAllAsync extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String response) {
-       TextView txtPrueba = (TextView) view.findViewById(R.id.txtPrueba);
-       String elementos = "";
-       for(ArticuloModel elemento:lista){
-           elementos += elemento.toString() + "\n";
-       }
-       txtPrueba.setText(elementos);
+       ArticuloListAdapter adaptador = new ArticuloListAdapter(this.lista, this.context);
+       ListView listView = (ListView) this.view.findViewById(R.id.lstArticulos);
+       listView.setAdapter(adaptador);
+       adaptador.notifyDataSetChanged();
+
     }
 }

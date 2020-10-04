@@ -84,6 +84,7 @@ public class ModificarFragment extends Fragment {
         bindControls(view);
         CategoriaSelectAllAsync task = new CategoriaSelectAllAsync(this.getContext(), view);
         task.execute();
+        Toast.makeText(this.getContext(), "Modificar Fragment", Toast.LENGTH_SHORT).show();
         cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {

@@ -5,12 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ListadoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtPrueba"
+    <ListView
+        android:id="@+id/lstArticulos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_background"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

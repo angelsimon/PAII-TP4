@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grupo06.tp04.R;
 import com.grupo06.tp04.system.helpers.ArticuloSelectAllAsync;
@@ -69,13 +70,12 @@ public class ListadoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bindControls(view);
+        //bindControls(view);
         ArticuloSelectAllAsync task = new ArticuloSelectAllAsync(this.getContext(), view);
         task.execute();
+        Toast.makeText(this.getContext(), "Listado Fragment", Toast.LENGTH_SHORT).show();
     }
 
-    private void bindControls(View view){
-        txtPrueba = (TextView) view.findViewById(R.id.txtPrueba);
-    }
+
 
 }

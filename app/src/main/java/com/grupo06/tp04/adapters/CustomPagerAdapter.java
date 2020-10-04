@@ -32,9 +32,9 @@ public class CustomPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int pos) {
         switch(pos) {
-            case 0: return AgregarFragment.newInstance("Agregar artículo");
-            case 1: return ModificarFragment.newInstance("Modificar un artículo");
-            case 2: return ListadoFragment.newInstance("Listado de artículos");
+            case 1: return AgregarFragment.newInstance("Agregar artículo");
+            case 2: return ModificarFragment.newInstance("Modificar un artículo");
+            case 3: return ListadoFragment.newInstance("Listado de artículos");
             /*case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
             case 3: return ThirdFragment.newInstance("ThirdFragment, Instance 2");
             case 4: return ThirdFragment.newInstance("ThirdFragment, Instance 3");*/

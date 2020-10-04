@@ -76,6 +76,7 @@ public class AgregarFragment extends Fragment {
             bindControls(view);
             CategoriaSelectAllAsync task = new CategoriaSelectAllAsync(this.getContext(), view);
             task.execute();
+            Toast.makeText(this.getContext(), "Agregar Fragment", Toast.LENGTH_SHORT).show();
             cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
