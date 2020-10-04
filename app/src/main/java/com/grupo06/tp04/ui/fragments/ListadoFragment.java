@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.grupo06.tp04.R;
-import com.grupo06.tp04.system.helpers.ArticuloSelectAsync;
+import com.grupo06.tp04.system.helpers.ArticuloSelectAllAsync;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +70,7 @@ public class ListadoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindControls(view);
-        ArticuloSelectAsync task = new ArticuloSelectAsync(this.getContext(), view);
+        ArticuloSelectAllAsync task = new ArticuloSelectAllAsync(this.getContext(), view);
         task.execute();
     }
 

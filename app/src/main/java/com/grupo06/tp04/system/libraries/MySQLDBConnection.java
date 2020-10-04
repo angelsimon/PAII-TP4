@@ -59,7 +59,7 @@ public class MySQLDBConnection {
         }
     }
 
-    public int insert(PreparedStatement statement) throws SQLException {
+    public int executeNonQuery(PreparedStatement statement) throws SQLException {
         int res;
         try{
             res = statement.executeUpdate();

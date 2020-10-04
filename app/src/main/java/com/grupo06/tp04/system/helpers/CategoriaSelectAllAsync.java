@@ -14,12 +14,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CategoriaSelectAsync extends AsyncTask<String, Void, String> {
+public class CategoriaSelectAllAsync extends AsyncTask<String, Void, String> {
     ArrayList<CategoriaModel> lista = new ArrayList<CategoriaModel>();
     Context context;
     View view;
 
-    public CategoriaSelectAsync(Context context, View view){
+    public CategoriaSelectAllAsync(Context context, View view){
         this.context = context;
         this.view = view;
     }

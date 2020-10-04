@@ -39,6 +39,18 @@ public class CategoriaSpinnerAdapter extends ArrayAdapter<CategoriaModel> {
         return position;
     }
 
+
+    public int getPosition(int id){
+        int i=0;
+        for(CategoriaModel element:values){
+            if(element.getId() == id){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         // I created a dynamic TextView here, but you can reference your own  custom layout for each spinner item
         TextView label = (TextView) super.getView(position, convertView, parent);

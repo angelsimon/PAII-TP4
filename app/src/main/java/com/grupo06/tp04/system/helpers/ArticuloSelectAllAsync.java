@@ -16,12 +16,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ArticuloSelectAsync extends AsyncTask<String, Void, String> {
+public class ArticuloSelectAllAsync extends AsyncTask<String, Void, String> {
     ArrayList<ArticuloModel> lista = new ArrayList<ArticuloModel>();
     Context context;
     View view;
 
-    public ArticuloSelectAsync(Context context, View view){
+    public ArticuloSelectAllAsync(Context context, View view){
         this.context = context;
         this.view = view;
     }

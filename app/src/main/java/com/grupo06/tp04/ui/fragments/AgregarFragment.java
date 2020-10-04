@@ -20,7 +20,7 @@ import com.grupo06.tp04.adapters.CategoriaSpinnerAdapter;
 import com.grupo06.tp04.models.ArticuloModel;
 import com.grupo06.tp04.models.CategoriaModel;
 import com.grupo06.tp04.system.helpers.ArticuloInsertAsync;
-import com.grupo06.tp04.system.helpers.CategoriaSelectAsync;
+import com.grupo06.tp04.system.helpers.CategoriaSelectAllAsync;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,13 +74,12 @@ public class AgregarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         try {
             bindControls(view);
-            CategoriaSelectAsync task = new CategoriaSelectAsync(this.getContext(), view);
+            CategoriaSelectAllAsync task = new CategoriaSelectAllAsync(this.getContext(), view);
             task.execute();
             cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                    CategoriaModel item = (CategoriaModel) cbxCategorias.getSelectedItem();
-                    Toast.makeText(getContext(), String.valueOf(item.getId()), Toast.LENGTH_SHORT).show();
+
                 }
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -95,8 +94,7 @@ public class AgregarFragment extends Fragment {
                         task.execute();
                     }
                     catch(Exception ex){
-                        ex.printStackTrace();
-                    }
+                        Toast.makeText(view.getContext(), "No se pudo agregar el artículo", Toast.LENGTH_LONG).show();                    }
                 }
             });
 
@@ -112,17 +110,6 @@ public class AgregarFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_agregar, container, false);
     }
-
-    /*public void AgregarClick(View view){
-        try {
-            ArticuloInsertAsync task = new ArticuloInsertAsync(this.getContext(), view, bindData());
-            task.execute();
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }*/
-
     private void bindControls(View view){
         txtID = (EditText)view.findViewById(R.id.txtID);
         txtNombre = (EditText)view.findViewById(R.id.txtNombre);
@@ -133,11 +120,16 @@ public class AgregarFragment extends Fragment {
 
     private ArticuloModel bindData(){
         ArticuloModel reg = new ArticuloModel();
-        reg.setId(Long.parseLong(txtID.getText().toString()));
-        reg.setNombre(txtNombre.getText().toString());
-        reg.setStock(Integer.parseInt(txtStock.getText().toString()));
-        CategoriaModel cat = (CategoriaModel) cbxCategorias.getSelectedItem();
-        reg.setIdCategoria(cat.getId());
+        try {
+            reg.setId(Long.parseLong(txtID.getText().toString()));
+            reg.setNombre(txtNombre.getText().toString());
+            reg.setStock(Integer.parseInt(txtStock.getText().toString()));
+            CategoriaModel cat = (CategoriaModel) cbxCategorias.getSelectedItem();
+            reg.setIdCategoria(cat.getId());
+        }
+        catch (Exception e){
+            Toast.makeText(this.getContext(), "Verifique de completar todos los campos", Toast.LENGTH_LONG).show();
+        }
         return reg;
     }
 }

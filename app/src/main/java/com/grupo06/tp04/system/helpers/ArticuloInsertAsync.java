@@ -35,12 +35,15 @@ public class ArticuloInsertAsync extends AsyncTask<String, Void, String> {
             statement.setString(2, reg.getNombre());
             statement.setInt(3, reg.getStock());
             statement.setInt(4, reg.getIdCategoria());
-            res = con.insert(statement);
+            res = con.executeNonQuery(statement);
             return "OK";
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+        catch(Exception e){
+            res = 0;
         }
             return "ERROR";
     }
