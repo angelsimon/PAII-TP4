@@ -7,6 +7,7 @@ public class ArticuloModel implements Serializable {
     private String nombre;
     private Integer stock;
     private Integer idCategoria;
+    private CategoriaModel categoria;
 
     public ArticuloModel(){
 
@@ -17,6 +18,7 @@ public class ArticuloModel implements Serializable {
         this.nombre = nombre;
         this.stock = stock;
         this.idCategoria = idCategoria;
+        this.categoria = new CategoriaModel();
     }
 
     public Long getId() {
@@ -51,6 +53,24 @@ public class ArticuloModel implements Serializable {
         this.idCategoria = idCategoria;
     }
 
+    public CategoriaModel getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaModel categoria) {
+        this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticuloModel{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", stock=" + stock +
+                ", idCategoria=" + idCategoria +
+                ", categoria=" + categoria.toString() +
+                '}';
+    }
 }
 
 
