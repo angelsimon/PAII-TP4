@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class ArticuloSelectOneAsync extends AsyncTask<String, Void, String> {
         EditText txtNombre = (EditText)view.findViewById(R.id.txtNombre);
         EditText txtStock = (EditText)view.findViewById(R.id.txtStock);
         Spinner cbxCategorias = (Spinner) view.findViewById(R.id.cbxCategoria);
+        Button btnBuscar = (Button) view.findViewById(R.id.btnBuscar);
 
         if (this.hasData){
             txtNombre.setText(articulo.getNombre());

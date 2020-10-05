@@ -102,6 +102,7 @@ public class ModificarFragment extends Fragment {
                 ArticuloModel reg = new ArticuloModel();
                 Long idArticulo = Long.parseLong(txtID.getText().toString());
                 reg.setId(idArticulo);
+
                 ArticuloSelectOneAsync task = new ArticuloSelectOneAsync(view.getContext(), getView(), reg);
                 task.execute();
             }
@@ -133,6 +134,9 @@ public class ModificarFragment extends Fragment {
         try {
             reg.setId(Long.parseLong(txtID.getText().toString()));
             reg.setNombre(txtNombre.getText().toString());
+            if (reg.getNombre().length() == 0){
+                throw new Exception();
+            }
             reg.setStock(Integer.parseInt(txtStock.getText().toString()));
             CategoriaModel cat = (CategoriaModel) cbxCategorias.getSelectedItem();
             reg.setIdCategoria(cat.getId());

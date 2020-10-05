@@ -3,102 +3,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     tools:context=".ui.fragments.AgregarFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginRight="10sp"
-            android:text="ID"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/txtID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="10sp"
+                android:text="ID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:text="NOMBRE PRODUCTO"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            <EditText
+                android:id="@+id/txtID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:inputType="number" />
 
-        <EditText
-            android:id="@+id/txtNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:ems="10"
-            android:inputType="textFilter"
-            android:digits="@string/solo_letras"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:text="NOMBRE PRODUCTO"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:text="STOCK"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            <EditText
+                android:id="@+id/txtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:digits="@string/solo_letras"
+                android:ems="10"
+                android:inputType="textFilter" />
 
-        <EditText
-            android:id="@+id/txtStock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:text="STOCK"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:text="CATEGORÍA"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            <EditText
+                android:id="@+id/txtStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:inputType="number" />
 
-        <Spinner
-            android:id="@+id/cbxCategoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginRight="10sp"
-            android:minHeight="50dp"
-            android:spinnerMode="dropdown" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:text="CATEGORÍA"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-        <Button
-            android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:onClick="AgregarClick"
-            android:text="AGREGAR" />
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/cbxCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10sp"
+                android:minHeight="50dp"
+                android:spinnerMode="dropdown" />
+
+            <Button
+                android:id="@+id/btnAgregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:onClick="AgregarClick"
+                android:text="AGREGAR" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

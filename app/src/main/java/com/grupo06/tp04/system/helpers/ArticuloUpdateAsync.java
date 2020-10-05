@@ -3,6 +3,7 @@ package com.grupo06.tp04.system.helpers;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -66,11 +67,13 @@ public class ArticuloUpdateAsync extends AsyncTask<String, Void, String> {
     private void limpiar(){
         EditText txtId, txtNombre, txtStock;
         Spinner cbxCategoria;
+        Button btnBuscar;
         //bind
         txtId = (EditText) view.findViewById(R.id.txtId);
         txtNombre = (EditText) view.findViewById(R.id.txtNombre);
         txtStock = (EditText) view.findViewById(R.id.txtStock);
         cbxCategoria = (Spinner) view.findViewById(R.id.cbxCategoria);
+        btnBuscar = (Button) view.findViewById(R.id.btnBuscar);
         //set default values
         txtId.setText("");
         txtNombre.setText("");
