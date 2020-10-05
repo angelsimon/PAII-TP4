@@ -35,8 +35,8 @@ public class ArticuloSelectOneAsync extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        MySQLDBConnection con = new MySQLDBConnection();
         try {
+            MySQLDBConnection con = new MySQLDBConnection();
             con.connect();
             ResultSet rs = con.select("select a.*, c.* from categoria as c inner join articulo as a on c.id = a.idCategoria where a.id = " + String.valueOf(this.articulo.getId()));
             while(rs.next()){

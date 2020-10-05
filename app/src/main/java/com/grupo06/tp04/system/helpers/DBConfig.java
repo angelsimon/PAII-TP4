@@ -9,4 +9,6 @@ public class DBConfig {
 
     public static String urlMySQL = "jdbc:mysql://" + host + ":" + port + "/" + nameBD;
     public static String driver = "com.mysql.jdbc.Driver";
+
+    public static final int MYSQL_DUPLICATE_ENTRY = 1062;
 }

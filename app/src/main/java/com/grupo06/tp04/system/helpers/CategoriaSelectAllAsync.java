@@ -26,8 +26,8 @@ public class CategoriaSelectAllAsync extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        MySQLDBConnection con = new MySQLDBConnection();
         try {
+            MySQLDBConnection con = new MySQLDBConnection();
             con.connect();
             ResultSet rs = con.select("select * from categoria");
             while(rs.next()){

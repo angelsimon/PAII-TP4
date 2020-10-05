@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,25 +83,25 @@ public class AgregarFragment extends Fragment {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
 
                 }
+
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
                 }
             });
-            btnAgregar.setOnClickListener(new Button.OnClickListener(){
+            btnAgregar.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
-                        ArticuloInsertAsync task = new ArticuloInsertAsync(view.getContext(), view, bindData());
+                        ArticuloInsertAsync task = new ArticuloInsertAsync(view.getContext(), getView(), bindData());
                         task.execute();
+                    } catch (Exception ex) {
+                        Toast.makeText(view.getContext(), "No se pudo agregar el artículo", Toast.LENGTH_LONG).show();
                     }
-                    catch(Exception ex){
-                        Toast.makeText(view.getContext(), "No se pudo agregar el artículo", Toast.LENGTH_LONG).show();                    }
                 }
             });
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -134,4 +136,5 @@ public class AgregarFragment extends Fragment {
         }
         return reg;
     }
+
 }

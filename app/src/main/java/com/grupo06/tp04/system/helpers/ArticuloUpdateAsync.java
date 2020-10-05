@@ -3,8 +3,11 @@ package com.grupo06.tp04.system.helpers;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.grupo06.tp04.R;
 import com.grupo06.tp04.models.ArticuloModel;
 import com.grupo06.tp04.system.libraries.MySQLDBConnection;
 
@@ -26,9 +29,9 @@ public class ArticuloUpdateAsync extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        MySQLDBConnection con = new MySQLDBConnection();
         String query;
         try {
+            MySQLDBConnection con = new MySQLDBConnection();
             query = "UPDATE articulo SET nombre = ?, stock = ?, idCategoria = ? WHERE id = ?";
             PreparedStatement statement = con.connect().prepareStatement(query);
             statement.setString(1, reg.getNombre());
@@ -36,6 +39,7 @@ public class ArticuloUpdateAsync extends AsyncTask<String, Void, String> {
             statement.setInt(3, reg.getIdCategoria());
             statement.setLong(4, reg.getId());
             res = con.executeNonQuery(statement);
+            con.close();
             return "OK";
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,6 +60,24 @@ public class ArticuloUpdateAsync extends AsyncTask<String, Void, String> {
         else{
             Toast.makeText(this.context, "No se pudo modificar el artículo", Toast.LENGTH_LONG).show();
         }
+        limpiar();
+    }
+
+    private void limpiar(){
+        EditText txtId, txtNombre, txtStock;
+        Spinner cbxCategoria;
+        //bind
+        txtId = (EditText) view.findViewById(R.id.txtId);
+        txtNombre = (EditText) view.findViewById(R.id.txtNombre);
+        txtStock = (EditText) view.findViewById(R.id.txtStock);
+        cbxCategoria = (Spinner) view.findViewById(R.id.cbxCategoria);
+        //set default values
+        txtId.setText("");
+        txtNombre.setText("");
+        txtStock.setText("");
+        cbxCategoria.setSelection(0);
+        //focus
+        txtId.requestFocus();
     }
 
 }

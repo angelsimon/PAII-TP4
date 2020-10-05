@@ -49,7 +49,8 @@
             android:layout_marginTop="10sp"
             android:layout_marginRight="10sp"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="textFilter"
+            android:digits="@string/solo_letras"/>
 
         <TextView
             android:id="@+id/textView3"

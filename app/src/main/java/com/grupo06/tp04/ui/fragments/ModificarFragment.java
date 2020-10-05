@@ -110,7 +110,7 @@ public class ModificarFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    ArticuloUpdateAsync task = new ArticuloUpdateAsync(view.getContext(), view, bindData());
+                    ArticuloUpdateAsync task = new ArticuloUpdateAsync(view.getContext(), getView(), bindData());
                     task.execute();
                 }
                 catch(Exception ex){
