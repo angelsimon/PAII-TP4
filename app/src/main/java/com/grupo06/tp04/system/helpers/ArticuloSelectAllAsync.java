@@ -63,6 +63,5 @@ public class ArticuloSelectAllAsync extends AsyncTask<String, Void, String> {
        ListView listView = (ListView) this.view.findViewById(R.id.lstArticulos);
        listView.setAdapter(adaptador);
        adaptador.notifyDataSetChanged();
-
     }
 }

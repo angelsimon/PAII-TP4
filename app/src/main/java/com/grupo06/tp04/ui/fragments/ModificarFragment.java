@@ -75,6 +75,8 @@ public class ModificarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        //Toast.makeText(this.getContext(), "Modificar Fragment", Toast.LENGTH_SHORT).show();
         return inflater.inflate(R.layout.fragment_modificar, container, false);
     }
 
@@ -84,7 +86,6 @@ public class ModificarFragment extends Fragment {
         bindControls(view);
         CategoriaSelectAllAsync task = new CategoriaSelectAllAsync(this.getContext(), view);
         task.execute();
-        Toast.makeText(this.getContext(), "Modificar Fragment", Toast.LENGTH_SHORT).show();
         cbxCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {

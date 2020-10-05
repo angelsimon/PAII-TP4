@@ -1,5 +1,6 @@
 package com.grupo06.tp04.ui.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -62,7 +63,6 @@ public class ListadoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_listado, container, false);
     }
@@ -70,12 +70,12 @@ public class ListadoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //bindControls(view);
-        ArticuloSelectAllAsync task = new ArticuloSelectAllAsync(this.getContext(), view);
-        task.execute();
-        Toast.makeText(this.getContext(), "Listado Fragment", Toast.LENGTH_SHORT).show();
     }
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        ArticuloSelectAllAsync task = new ArticuloSelectAllAsync(this.getContext(), this.getView());
+        task.execute();
+    }
 
 }
